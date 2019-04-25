@@ -19,7 +19,7 @@
      <rect>
       <x>20</x>
       <y>40</y>
-      <width>381</width>
+      <width>370</width>
       <height>25</height>
      </rect>
     </property>
@@ -40,7 +40,7 @@
    <widget class="QToolButton" name="toolButton">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>400</x>
       <y>40</y>
       <width>30</width>
       <height>25</height>

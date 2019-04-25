@@ -9,21 +9,27 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QFileDialog
-from module.openfiles import OpenParseFile
 
 
 class Ui_MainWindow(object):
+
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(452, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.lineEditOpenFile = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEditOpenFile.setGeometry(QtCore.QRect(20, 40, 381, 25))
+        self.lineEditOpenFile.setGeometry(QtCore.QRect(20, 40, 380, 25))
         self.lineEditOpenFile.setObjectName("lineEditOpenFile")
+        self.lineEditOpenFile.setMaxLength(100)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(20, 20, 130, 15))
         self.label.setObjectName("label")
+        self.labelResult = QtWidgets.QLabel(self.centralwidget)
+        self.labelResult.setGeometry(100, 100, 200, 400)
+        self.labelResult.setObjectName("Result")
+
         self.toolButton = QtWidgets.QToolButton(self.centralwidget)
         self.toolButton.setGeometry(QtCore.QRect(410, 40, 30, 25))
         self.toolButton.setCheckable(False)
@@ -42,16 +48,17 @@ class Ui_MainWindow(object):
         self.buttonBox.setGeometry(QtCore.QRect(260, 510, 169, 25))
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
+
+
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         openFile = QtWidgets.QAction(QIcon(), 'Open', MainWindow)
         openFile.setShortcut('Ctrl+O')
         openFile.setStatusTip('Open new File')
-
         openFile.triggered.connect(self.file_open)
         filemenu = self.menubar.addMenu("Файл")
         filemenu.addAction(openFile)
-
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
         MainWindow.setMenuBar(self.menubar)
@@ -65,13 +72,14 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "Папка назначения"))
+        self.labelResult.setText(_translate("MainWindow", "Result"))
         self.toolButton.setText(_translate("MainWindow", "..."))
 
-    def file_open(self):
-        fname = QFileDialog.getOpenFileName(self, 'Open file', '/home')[0]
-
-        f = open(fname, 'r')
-
-        with f:
-            data = f.name
-            self.lineEditOpenFile.setText(str(data))
+    # def file_open(self):
+    #     fname = QFileDialog.getOpenFileName()[0]
+    #
+    #     f = open(fname, 'r')
+    #
+    #     with f:
+    #         data = f.name
+    #         self.lineEditOpenFile.setText(str(data))
