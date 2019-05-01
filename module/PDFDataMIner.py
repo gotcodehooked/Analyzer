@@ -1,12 +1,17 @@
+from pdfminer.pdfdevice import PDFDevice
+from pdfminer.pdfdocument import PDFTextExtractionNotAllowed, PDFDocument
+
 from module.DataMiner import DataMiner
+import docx
 
 import io
-
-from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+from pdfminer.pdfparser import PDFParser
+from pdfminer.converter import TextConverter, PDFPageAggregator
 from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.pdfinterp import PDFResourceManager
 from pdfminer.pdfpage import PDFPage
-from main_gui import  Ui_MainWindow
+from main_gui import Ui_MainWindow
 
 
 class PDFDataMiner(DataMiner):
@@ -19,6 +24,14 @@ class PDFDataMiner(DataMiner):
     @getcount.setter
     def getcount(self, value):
         self._count = value
+
+    def pdfAnalyze(self, path):
+
+        document = docx.Document(path)
+        print(len(document.paragraphs))
+
+
+
 
 
 
@@ -52,6 +65,5 @@ class PDFDataMiner(DataMiner):
         fileName = self.getpath
         pageGenerator = self.extract_text_by_page(fileName)
         pageList = [pageList for pageList in pageGenerator]
-        print(pageList[0])
-
-
+        for i in pageList[0]:
+            print(i)

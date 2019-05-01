@@ -18,6 +18,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.toolButton.clicked.connect(self.openFileNameDialog)
+
         self.buttonBox.accepted.connect(self.startAnayzer)
 
     def openFileNameDialog(self):
@@ -32,7 +33,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def startAnayzer(self):
         print("start Analyze")
-        PDFDataMiner.extract_text(PDFDataMiner())
+        PDFDataMiner.pdfAnalyze(PDFDataMiner(),PDFDataMiner.getpath)
 
     def keyPressEvent(self, e):
         if self.lineEditOpenFile.text() != '':
@@ -56,11 +57,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             isEmptyLineMessage.show()
             print("sfsf")
 
-    def returnObjectPDF(self):
-        return PDFDataMiner
-
-    def returnObjectPDFo(self):
-        return PDFDataMiner()
 
     def file_open(self):
         dialog = QFileDialog.getOpenFileName()[0]
