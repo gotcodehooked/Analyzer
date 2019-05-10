@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>452</width>
-    <height>600</height>
+    <height>590</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -81,17 +81,30 @@
      <string notr="true"/>
     </property>
    </widget>
-   <widget class="QDialogButtonBox" name="buttonBox">
+   <widget class="QPushButton" name="startAnalyzeButton">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>510</y>
-      <width>169</width>
+      <x>350</x>
+      <y>500</y>
+      <width>80</width>
       <height>25</height>
      </rect>
     </property>
-    <property name="standardButtons">
-     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+    <property name="text">
+     <string>Анализ</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cancelAnalyzeButton">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>500</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Отмена</string>
     </property>
    </widget>
   </widget>

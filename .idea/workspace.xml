@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1b4db50-cedd-4eb9-96cf-607fce8bfe4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/module/DocxCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sbr.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/buttons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_gui.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main_gui.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/DataMiner.py" beforeDir="false" afterPath="$PROJECT_DIR$/module/DataMiner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/DocxCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/module/DocxDataMiner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/PDFDataMIner.py" beforeDir="false" afterPath="$PROJECT_DIR$/module/PDFDataMIner.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,13 +20,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="e#2#97#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_gui.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-858" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/module/DataMiner.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/module/DocxDataMiner.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/module/PDFDataMIner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+            <state relative-caret-position="152">
+              <caret line="8" selection-end-line="40" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -40,6 +81,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>eleme</find>
+      <find>part</find>
+      <find>element</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -53,22 +96,25 @@
         <option value="$PROJECT_DIR$/sample.py" />
         <option value="$PROJECT_DIR$/module/openfiles.py" />
         <option value="$PROJECT_DIR$/main2.py" />
-        <option value="$PROJECT_DIR$/main1.py" />
         <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pdfminer/utils.py" />
         <option value="$PROJECT_DIR$/progress.py" />
-        <option value="$PROJECT_DIR$/module/DataMiner.py" />
-        <option value="$PROJECT_DIR$/main_gui.py" />
         <option value="$PROJECT_DIR$/module/DocxCreator.py" />
+        <option value="$PROJECT_DIR$/main1.py" />
+        <option value="$PROJECT_DIR$/adapter.py" />
+        <option value="$PROJECT_DIR$/main_gui.py" />
+        <option value="$PROJECT_DIR$/module/DocxDataMiner.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/module/DataMiner.py" />
         <option value="$PROJECT_DIR$/module/PDFDataMIner.py" />
+        <option value="$PROJECT_DIR$/ui/buttons.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="315" />
-    <option name="y" value="123" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="410" />
+    <option name="y" value="103" />
     <option name="width" value="1407" />
-    <option name="height" value="957" />
+    <option name="height" value="941" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -88,6 +134,10 @@
               <item name="analyzer" type="462c0819:PsiDirectoryNode" />
               <item name="module" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="analyzer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -98,7 +148,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ui/buttons.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -139,6 +189,28 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="buttons" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="analyzer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ui" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ui/buttons.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
@@ -190,9 +262,11 @@
     <list>
       <item itemvalue="Python.main" />
       <item itemvalue="Python.main_gui" />
+      <item itemvalue="Python.buttons" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.buttons" />
         <item itemvalue="Python.main_gui" />
       </list>
     </recent_temporary>
@@ -221,7 +295,15 @@
       <workItem from="1555943534627" duration="3460000" />
       <workItem from="1556032884217" duration="1233000" />
       <workItem from="1556207539430" duration="1909000" />
-      <workItem from="1556717499442" duration="6600000" />
+      <workItem from="1556717499442" duration="17658000" />
+      <workItem from="1557086278780" duration="1225000" />
+      <workItem from="1557489063147" duration="1000" />
+      <workItem from="1557489232322" duration="296000" />
+      <workItem from="1557489546308" duration="114000" />
+      <workItem from="1557489674708" duration="420000" />
+      <workItem from="1557490125352" duration="128000" />
+      <workItem from="1557490273682" duration="107000" />
+      <workItem from="1557490410533" duration="16449000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1556215641273</created>
@@ -230,11 +312,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556215641273</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="first commit">
+      <created>1556736543053</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1556736543053</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125372000" />
+    <option name="totallyTimeSpent" value="155170000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -246,16 +335,41 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="495" y="99" width="1407" height="957" extended-state="0" />
+    <frame x="0" y="27" width="1837" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21895665" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20714684" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3276492" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36641222" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.46285018" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32978722" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3276492" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.46459627" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32712767" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21895665" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32781065" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3727162" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.46346784" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3727162" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.46285018" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32978722" />
@@ -272,12 +386,15 @@
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" id="Database" order="6" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/Analyzer" />
+    </ignored-roots>
     <MESSAGE value="first commit" />
     <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
@@ -293,7 +410,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/analyzer$main.coverage" NAME="main Coverage Results" MODIFIED="1556736429909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/analyzer$main.coverage" NAME="main Coverage Results" MODIFIED="1557520391168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/analyzer$buttons.coverage" NAME="buttons Coverage Results" MODIFIED="1557514992558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
     <SUITE FILE_PATH="coverage/analyzer$main_gui.coverage" NAME="main_gui Coverage Results" MODIFIED="1555354392432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
@@ -308,9 +426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.spec">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/sample.py" />
     <entry file="file:///usr/lib/python3.6/abc.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -320,31 +435,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main2.py" />
-    <entry file="file://$PROJECT_DIR$/main1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1843">
-          <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/pdfminer/cmapdb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/pdfminer/pdffont.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/runpy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>
@@ -364,13 +458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/pdfminer/psparser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -396,33 +483,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_gui.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/docx/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
-          <folding>
-            <element signature="e#197#239#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module/DataMiner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module/DocxCreator.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/docx/document.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3386">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="29" />
+        <state relative-caret-position="162">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -430,16 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="35" column="67" selection-start-line="35" selection-start-column="67" selection-end-line="35" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -457,19 +511,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/docx/api.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/docx/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/docx/shared.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state>
+          <caret line="178" lean-forward="true" selection-start-line="178" selection-end-line="178" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/docx/oxml/xmlchemy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="272" selection-start-line="272" selection-end-line="272" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/docx/oxml/text/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/pdfminer/psparser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="210" selection-start-line="210" selection-end-line="210" />
+          <folding>
+            <element signature="e#48#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/docx/document.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+          <folding>
+            <element signature="e#65#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.spec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adapter.py" />
+    <entry file="file:///usr/lib/python3.6/runpy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3572">
+          <caret line="192" selection-start-line="192" selection-end-line="192" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1539" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module/DocxDataMiner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-858" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/pdfminer/pdffont.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="566" selection-start-line="566" selection-end-line="566" />
+          <folding>
+            <element signature="e#1#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#2#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module/DataMiner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/buttons.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/module/PDFDataMIner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        <state relative-caret-position="152">
+          <caret line="8" selection-end-line="40" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
