@@ -10,18 +10,14 @@ from pdfminer.pdfpage import PDFPage
 
 class PDFDataMiner(DataMiner):
 
-    @classmethod
-    def analyzeData(cls):
-        fileName = cls.getpath
-        pageGenerator = cls.parseData(fileName)
-
+    def analyzeData(self):
+        pageGenerator = self.parseData()
         pageList = [pageList for pageList in pageGenerator]
+        for i in pageList:
+            print(i)
 
-        return pageList[0]
-
-    @classmethod
-    def parseData(cls, pdf_path):
-        with open(pdf_path, 'rb') as fh:
+    def parseData(self):
+        with open(self.getpath, 'rb') as fh:
             for page in PDFPage.get_pages(fh,
                                           caching=True,
                                           check_extractable=True):
@@ -38,3 +34,6 @@ class PDFDataMiner(DataMiner):
                 # close open handles
                 converter.close()
                 fake_file_handle.close()
+
+    def sendReport(self):
+        pass

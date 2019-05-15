@@ -1,38 +1,48 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QTextEdit, QFileDialog, QAction, QDialog
-from PyQt5.uic.properties import QtCore, QtGui
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox
 
 from main_gui import Ui_MainWindow
 
-from PyQt5.QtCore import QCoreApplication, QObject, Qt, pyqtSignal
-
+from module import DataMiner
+from module.DocxDataMiner import DocxDataMiner
 from module.PDFDataMIner import PDFDataMiner
-from PyQt5 import QtWidgets
 
 
-# Создаём ещё один класс, наследуясь от класса со слотами
 class MainWindow(QMainWindow, Ui_MainWindow):
 
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
-        self.toolButton.clicked.connect(self.openFileNameDialog)
-        self.startAnalyzeButton.clicked.connect(self.startAnalyzing)
-        # self.cancelAnalyzeButton.clicked.connect(PDFDataMiner.openFileNameDialog)
+        self.path = ""
+        self.lineEditOpenFile.returnPressed.connect(self.openFileNameDialog)
+        self.toolButton.pressed.connect(self.openFileNameDialog)
+        self.startAnalyzeButton.clicked.connect(lambda: self.startAnalyzing(self.fileTypeDetection()))
+        self.cancelAnalyzeButton.pressed.connect(self.cancelAnalysis)
 
+    def fileTypeDetection(self):
+        if self.path.endswith(".pdf"):
+            print("PDF")
+            return PDFDataMiner()
+        elif self.path.endswith(".docx"):
+            print("DOCX")
+            return DocxDataMiner()
 
     def openFileNameDialog(self):
         options = QFileDialog.Options()
-        object = PDFDataMiner
         options |= QFileDialog.DontUseNativeDialog
-        filename = QFileDialog.getOpenFileName(options=options)[0]
-        object.getpath = filename
-        self.lineEditOpenFile.setText(filename)
+        self.path = QFileDialog.getOpenFileName(options=options)[0]
+        self.lineEditOpenFile.setText(self.path)
 
-
-    def startAnalyzing(self):
+    def startAnalyzing(self, dataMiner: DataMiner):
         print("start Analyze")
-        PDFDataMiner.analyzeData()
+        dataMiner.getpath = self.path
+        dataMiner.analyzeData()
 
+
+    def getInstance(self):
+        pass
+
+    def cancelAnalysis(self):
+        return self.startAnalyzeButton.disconnect()
 
 
 def main():
