@@ -1,39 +1,44 @@
 from module.DataMiner import DataMiner
-
-import io
-
-from pdfminer.converter import TextConverter
-from pdfminer.pdfinterp import PDFPageInterpreter
-from pdfminer.pdfinterp import PDFResourceManager
-from pdfminer.pdfpage import PDFPage
+from fitz import *
+import json
 
 
 class PDFDataMiner(DataMiner):
 
+    def __init__(self, path):
+        super().__init__(path)
+
     def analyzeData(self):
-        pageGenerator = self.parseData()
-        pageList = [pageList for pageList in pageGenerator]
-        for i in pageList:
-            print(i)
+        pass
 
     def parseData(self):
-        with open(self.getpath, 'rb') as fh:
-            for page in PDFPage.get_pages(fh,
-                                          caching=True,
-                                          check_extractable=True):
-                resource_manager = PDFResourceManager()
-                fake_file_handle = io.StringIO()
-                converter = TextConverter(resource_manager, fake_file_handle)
-                page_interpreter = PDFPageInterpreter(resource_manager, converter)
-                page_interpreter.process_page(page)
+        doc = fitz.open(self.getpath)
 
-                text = fake_file_handle.getvalue()
+        if doc.isPDF:
 
-                yield text
+            pageList = [page for page in doc]
+            data = [page.getText('json') for page in pageList]
 
-                # close open handles
-                converter.close()
-                fake_file_handle.close()
+            doc.close()
+            return data
+        else:
+            doc.close()
+
+
+    def convertToJSON(self):
+
+        pageList = self.parseData()
+
+        convertResult = [json.loads(page) for page in pageList]
+
+        print(convertResult[20]['blocks'][1]['lines'])
+        # result = json.loads(pageList)
+        lst = []
+
+        # for i in range(10):
+        # lst = result['blocks'][5]['lines'][0]['spans'][1]['text']
+
+
 
     def sendReport(self):
         pass

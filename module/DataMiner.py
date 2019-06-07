@@ -2,7 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class DataMiner(ABC):
-    __path = ""
+
+    def __init__(self, path):
+        self.__path = path
 
     @property
     def getpath(self):
@@ -21,5 +23,11 @@ class DataMiner(ABC):
         pass
 
     @abstractmethod
+    def convertToJSON(self):
+        pass
+
+    @abstractmethod
     def analyzeData(self):
         pass
+
+
