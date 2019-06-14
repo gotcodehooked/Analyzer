@@ -1,10 +1,7 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QTextEdit, QHBoxLayout, QPushButton, QLabel, \
-    QLineEdit
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QTextEdit, QGridLayout, QLabel
+from module.ContentAnalisys import LSI, unicode
+from DocxCreator import DocxCreator
 from main_gui import Ui_MainWindow
-from PyQt5 import QtCore
-from module import DataMiner
-from module.DocxDataMiner import DocxDataMiner
-from module.PDFDataMIner import PDFDataMiner
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -13,108 +10,120 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.k = 0
-        self.path = ""
+        self.saveDirPath = ""
+        #  Хранение объектов Qt
         self.hlItems = []
         self.labelItems = []
         self.editItems = []
+        self.keywordsItems = []
+        self.editTextNameArticle = []
+
+        # Данные с полей
         self.articles = []
-        self.cancelAnalyzeButton.clicked.connect(self.getArticles)
-        self.saveDirPath = ""
-        self.lineEditOpenFile.returnPressed.connect(self.setPathFromLineEdit)
-        self.toolButton.clicked.connect(self.setFilePath)
+        self.nameArticles = []
+        self.keywordsArticle = []
+
+        self.lineEditOpenFile.returnPressed.connect(self.setSaveFileDirectory)
+        self.toolButton.clicked.connect(self.setSaveFileDirectory)
         self.addArticle.clicked.connect(lambda: self.addArticles(self.spinArticleBox.text()))
         self.removeArticle.clicked.connect(lambda: self.delArticles(self.spinBox.text()))
-        self.startAnalyzeButton.clicked.connect(lambda: self.btnstate(self.getInstance()))
-
-    def getInstance(self):
-        if self.path.endswith(".pdf"):
-            print("pdf")
-            return PDFDataMiner(self.path)
-        elif self.path.endswith(".docx"):
-            print("docx")
-            return DocxDataMiner(self.path)
-
-    def setPathFromLineEdit(self):
-        if self.lineEditOpenFile.text().endswith(".pdf"):
-            self.path = self.lineEditOpenFile.text()
-
-        elif self.lineEditOpenFile.text().endswith(".docx"):
-            self.path = self.lineEditOpenFile.text()
-
-        else:
-            self.setFilePath()
-
-    def setFilePath(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        self.path = QFileDialog.getOpenFileName(options=options)[0]
-        self.lineEditOpenFile.setText(self.path)
+        # self.cancelAnalyzeButton.clicked.connect(self.getArticlesInfo)
+        self.startAnalyzeButton.clicked.connect(lambda: self.btnstate())
 
     def setSaveFileDirectory(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         self.saveDirPath = QFileDialog.getSaveFileName(options=options)[0]
-        print(self.saveDirPath)
+        self.lineEditOpenFile.setText(self.saveDirPath)
 
-    def startAnalyzing(self, dataMiner: DataMiner):
-        return dataMiner.convertToJSON()
+    def startAnalyzing(self):
+        self.buildArticlesInfo()
+        # self.keywordsArticle.
+        self.getKeyWordList()
+        lsi = LSI(["в", "и", "о", "для", "еще", "не"], self.articles)
+        lsi.hyphenProcessing(self.articles[0])
+        wdict = lsi.wdict
 
-    def cancelAnalysis(self):
-        return self.startAnalyzeButton.pressed.disconnect()
+        document = DocxCreator()
+        document.addDataInDocx(self.saveDirPath, self.articles, self.nameArticles, self.keywordsArticle, wdict)
 
-    def btnstate(self, dataMiner: DataMiner):
+    def btnstate(self):
 
         if self.startAnalyzeButton.isChecked():
-            self.startAnalyzing(dataMiner)
+            self.startAnalyzing()
             self.startAnalyzeButton.toggle()
         else:
             pass
+
+    def getKeyWordList(self):
+        keywordList = []
+        for article in range(len(self.keywordsArticle)):
+            for word in self.keywordsArticle[article].split(','):
+                keywordList.append(LSI.processingIgnoreChars(self, word))
+
+        return keywordList
 
     def addArticles(self, number):
 
         for i in range(int(number)):
             self.k += 1
-            element = QHBoxLayout()
-            label = QLabel(str(len(self.labelItems)+1))
+            element = QGridLayout()
+            element.setSpacing(10)
+
+            label = QLabel("Статья: " + str(len(self.labelItems) + 1))
+
             editText = QTextEdit()
-            element.addWidget(label)
-            element.addWidget(editText)
+            editTextNameArticle = QTextEdit()
+            editTextKeyWords = QTextEdit()
+
+            editTextKeyWords.setFixedHeight(60)
+            editTextNameArticle.setFixedHeight(50)
+
+            editTextNameArticle.setPlaceholderText("Название статьи")
+            editTextKeyWords.setPlaceholderText("Ключевые слова")
+            editText.setPlaceholderText("Введите статью")
+
+            element.addWidget(label, 0, 1)
+            element.addWidget(editTextNameArticle, 1, 1)
+            element.addWidget(editText, 2, 1)
+            element.addWidget(editTextKeyWords, 3, 1)
+
+            self.keywordsItems.append(editTextKeyWords)
             self.hlItems.append(element)
             self.labelItems.append(label)
+            self.editTextNameArticle.append(editTextNameArticle)
             self.editItems.append(editText)
+
             self.verticalLayout_2.addLayout(element)
+
             self.numberArticlesLabel.setText(str(len(self.hlItems)))
-
-    def getArticles(self):
-        print("dasdas")
-        for i in range(len(self.hlItems)):
-            self.articles.append(self.editItems[i].toPlainText())
-
-        print(self.articles)
-
-    def removeArticleList(self):
-        pass
-
 
     def delArticles(self, count):
         ct = int(count)
-
         if ct < len(self.hlItems) or ct == len(self.hlItems):
             for i in range(len(self.hlItems) - ct, len(self.hlItems)):
-
                 self.hlItems[i].setParent(None)
                 self.labelItems[i].setParent(None)
                 self.editItems[i].setParent(None)
+                self.editTextNameArticle[i].setParent(None)
+                self.keywordsItems[i].setParent(None)
 
             for i in range(ct):
                 del self.hlItems[-1]
                 del self.labelItems[-1]
                 del self.editItems[-1]
-
+                del self.editTextNameArticle[-1]
+                del self.keywordsItems[-1]
         else:
             pass
 
         self.numberArticlesLabel.setText(str(len(self.hlItems)))
+
+    def buildArticlesInfo(self):
+        for i in range(len(self.hlItems)):
+            self.nameArticles.append(self.editTextNameArticle[i].toPlainText())
+            self.articles.append(self.editItems[i].toPlainText())
+            self.keywordsArticle.append(self.keywordsItems[i].toPlainText())
 
 
 def main():

@@ -1,136 +1,74 @@
-from numpy import linalg
 from nltk.stem.snowball import SnowballStemmer
-
 from scipy import *
 
 
 class LSI(object):
-    def __init__(self, stopwords, ignorechars, docs):
-        self.docs = []
-        self.wdict = {}
+    def __init__(self, stopwords, articles):
+        self.articles = []
+        self.wdict = []
+
         self.dictionary = []
         self.stopwords = stopwords
-        if type(ignorechars) == unicode:
-            ignorechars = ignorechars.encode('utf-8')
-            self.ignorechars = ignorechars
-        for doc in docs:
-            self.add_doc(doc)
+        self.wordsNumber = 0
 
-    def prepare(self):
-        self.build()
-        self.calc()
+        self.i = 0
 
-    def dic(self, word, add=False):
-        if type(word) == unicode:
-            word = word.encode('utf-8')
-        word = word.lower().translate(None, self.ignorechars)
-        word = word.decode('utf-8')
+        for article in articles:
+            self.addArticleDic(article, self.i)
+
+            self.i += 1
+
+    def dictionaryArticle(self, word, i):
+
+        word = self.processingIgnoreChars(word)
         stemmer = SnowballStemmer("russian")
         word = stemmer.stem(word)
-
-        if word in self.dictionary:
-            return self.dictionary.index(word)
+        print(word)
+        if not word in self.dictionary[i]:
+            self.dictionary[i].append(word)
         else:
-            if add:
-                self.dictionary.append(word)
-                return len(self.dictionary) - 1
+            self.dictionary[i].append(word)
 
-            else:
-                return None
+    def addArticleDic(self, article, i):
+        self.dictionary.append([])
+        self.wdict.append({})
+        saveProblemWord = ""
+        for word in article.split():
 
-    def add_doc(self, doc):
-        words = [self.dic(word, True) for word in doc.lower().split()]
-        self.docs.append(words)
-        for word in words:
-            if word in self.stopwords:
+            if str(word).endswith('-'):
+                saveProblemWord = word
                 continue
-            elif word in self.wdict:
-                self.wdict[word].append(len(self.docs) - 1)
+            word = saveProblemWord + word
+            saveProblemWord = ""
+
+            self.dictionaryArticle(word, i)
+
+        for word in self.dictionary[i]:
+            if word in self.stopwords:
+                self.dictionary[i].remove(word)
+
+        for word in self.dictionary[i]:
+            if word in self.wdict[i]:
+                self.wdict[i][word] += 1
+
             else:
-                self.wdict[word] = [len(self.docs) - 1]
+                self.wdict[i][word] = 1
 
-    def build(self):
-        self.keys = [k for k in self.wdict.keys() if len(self.wdict[k]) > 0]
-        self.keys.sort()
-        self.A = zeros([len(self.keys), len(self.docs)])
-        for i, k in enumerate(self.keys):
-            for d in self.wdict[k]:
-                self.A[i, d] += 1
+    def hyphenProcessing(self, article):
 
-    def calc(self):
-        self.U, self.S, self.Vt = linalg.svd(self.A)
+        print(article.split('-'))
 
-    def TFIDF(self):
-        wordsPerDoc = sum(self.A, axis=0)
-        docsPerWord = sum(asarray(self.A > 0, 'i'), axis=1)
-        rows, cols = self.A.shape
-        for i in range(rows):
-            for j in range(cols):
-                self.A[i, j] = (self.A[i, j] / wordsPerDoc[j]) * log(float(cols) / docsPerWord[i])
+    def processingIgnoreChars(self, word):
 
-    def dump_src(self):
-        self.prepare()
-        print('Здесь представлен расчет матрицы ')
-        for i, row in enumerate(self.A):
-            print(self.dictionary[i], row)
+        ignorechars = ''',\n:.;-'!'''
 
-    def print_svd(self):
-        self.prepare()
-        print('Здесь сингулярные значения')
-        print(self.S)
-        print('Здесь первые 3 колонки U матрица ')
-        for i, row in enumerate(self.U):
-            print(self.dictionary[self.keys[i]], row[0:3])
-            print('Здесь первые 3 строчки Vt матрица')
-            print(-1 * self.Vt[0:3, :])
+        if type(ignorechars) == unicode:
+            ignorechars = ignorechars.encode('utf-8')
 
-    def find(self, word):
-        self.prepare()
-        idx = self.dic(word)
-        if not idx:
-            print('слово невстерчается')
+        if type(word) == unicode:
+            word = word.encode('utf-8')
 
-            return []
-        if not idx in self.keys:
-            print('слово отброшено как не имеющее значения которое через stopwords')
+        word = word.lower().translate(None, ignorechars)
+        word = word.decode('utf-8')
 
-            return []
-        idx = self.keys.index(idx)
-        print('word --- ', word, '=', self.dictionary[self.keys[idx]], '.\n')
-
-        # # получаем координаты слова
-        # wx, wy = (-1 * self.U[:, 1:3])[idx]
-        # print('word {}\t{:0.2f}\t{:0.2f}\t{}\n'.format(idx, wx, wy, word))
-        #
-        # arts = []
-        # xx, yy = -1 * self.Vt[1:3, :]
-        # for k, v in enumerate(self.docs):
-        #     ax, ay = xx[k], yy[k]
-        #     dx, dy = float(wx - ax), float(wy - ay)
-        #     arts.append((k, v, ax, ay, sqrt(dx * dx + dy * dy)))
-        # return sorted(arts, key=lambda a: a[4])
-
-
-docs = [
-    "Британская полиция знает о местонахождении основателя WikiLeaks",
-    "В суде США США начинается процесс против россиянина, рассылавшего спам",
-    "Церемонию вручения Нобелевской премии мира бойкотируют 19 стран",
-    "В Великобритании арестован основатель сайта Wikileaks Джулиан Ассандж",
-    "Украина игнорирует церемонию вручения Нобелевской премии",
-    "Шведский суд отказался рассматривать апелляцию основателя Wikileaks",
-    "НАТО и США разработали планы обороны стран Балтии против России",
-    "Полиция Великобритании нашла основателя WikiLeaks, но, не арестовала",
-    "В Стокгольме и осло сегодня состоится вручение Нобелевских премий"
-]
-ignorechars = ''',:'!'''
-word = "в"
-
-lsa = LSI(["в", " и"], ignorechars, docs)
-
-lsa.build()
-lsa.dump_src()
-lsa.calc()
-lsa.print_svd()
-
-print(lsa.find("в"))
-
+        return word

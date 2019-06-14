@@ -24,21 +24,11 @@ class PDFDataMiner(DataMiner):
         else:
             doc.close()
 
-
     def convertToJSON(self):
 
         pageList = self.parseData()
 
         convertResult = [json.loads(page) for page in pageList]
-
-        print(convertResult[20]['blocks'][1]['lines'])
-        # result = json.loads(pageList)
-        lst = []
-
-        # for i in range(10):
-        # lst = result['blocks'][5]['lines'][0]['spans'][1]['text']
-
-
 
     def sendReport(self):
         pass

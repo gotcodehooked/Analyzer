@@ -4,7 +4,6 @@ from module.DataMiner import DataMiner
 from docx import *
 
 
-
 class DocxDataMiner(DataMiner):
 
     def __init__(self, path):
@@ -31,8 +30,6 @@ class DocxDataMiner(DataMiner):
 
         # return pharList
 
-
-
     def analyzeData(self):
         pharList = self.parseData()
         # print(type(pharList))
@@ -47,57 +44,6 @@ class DocxDataMiner(DataMiner):
         # print(len(pharList))
         # for i in range(len(pharList)):
         #     print(pharList[i])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     def sendReport(self):
         pass
